@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    internal class clsPregunta
+    public class clsPregunta
     {
         #region Attributes
         private readonly int id = 0;
