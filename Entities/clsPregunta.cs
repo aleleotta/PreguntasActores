@@ -8,5 +8,13 @@ namespace Entities
 {
     internal class clsPregunta
     {
+        #region Attributes
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Constructors
+        #endregion
     }
 }
