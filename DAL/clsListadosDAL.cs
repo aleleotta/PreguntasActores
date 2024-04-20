@@ -8,6 +8,13 @@ namespace DAL
         {
             List<clsActor> listadoActores = new List<clsActor>
             {
+                new clsActor(),
+                new clsActor(),
+                new clsActor(),
+                new clsActor(),
+                new clsActor(),
+                new clsActor(),
+                new clsActor(),
                 new clsActor()
             };
             return listadoActores;

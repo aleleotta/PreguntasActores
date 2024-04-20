@@ -87,6 +87,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Resources\Music\" />
+	  <Folder Include="Resources\Sounds\" />
 	  <Folder Include="Resources\Photos\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
