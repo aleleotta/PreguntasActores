@@ -87,6 +87,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Resources\Photos\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 

@@ -28,8 +28,17 @@ namespace DAL
             };
             return listadoRespuestas;
         }
-        public static clsActor getActorPorId(int idActor) { }
-        public static clsPregunta getPreguntaPorId(int idPregunta) { }
-        public static clsRespuesta getRespuestaPorId(int idRespuesta) { }
+        public static clsActor getActorPorId(int idActor)
+        {
+            return new clsActor();
+        }
+        public static clsPregunta getPreguntaPorId(int idPregunta)
+        {
+            return new clsPregunta();
+        }
+        public static clsRespuesta getRespuestaPorId(int idRespuesta)
+        {
+            return new clsRespuesta();
+        }
     }
 }
