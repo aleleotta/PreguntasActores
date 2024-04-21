@@ -9,10 +9,7 @@
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-        <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <FlexLayout Wrap="Wrap">
+        
+    </FlexLayout>
 </ContentPage>

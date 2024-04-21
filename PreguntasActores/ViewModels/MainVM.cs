@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Entities;
-using Plugin.Maui.Audio;
 using PreguntasActores.Utilities;
 
 namespace PreguntasActores.ViewModels
@@ -17,28 +16,25 @@ namespace PreguntasActores.ViewModels
     {
         #region Attributes
         private ObservableCollection<clsActor> listadoActores;
-        private ObservableCollection<clsPregunta> listadoPreguntas;
-        private ObservableCollection<clsRespuesta> listadoRespuestas;
-        private IAudioManager audioManager;
-        private clsPregunta preguntaActual;
-        private clsRespuesta respuestaSeleccionada;
-        private DelegateCommand cambiarRespuesta;
+        private ObservableCollection<clsActor> listadoCuatroActores;
+        private clsActor actorActual;
+        private clsActor actorSeleccionado;
+        private DelegateCommand seleccionarRespuesta;
         #endregion
 
         #region Properties
-        public ObservableCollection<clsPregunta> ListadoPreguntas { get { return listadoPreguntas; } }
-        public ObservableCollection<clsRespuesta> ListadoRespuestas { get { return listadoRespuestas; } }
-        public clsPregunta PreguntaActual { get { return preguntaActual; } }
-        public clsRespuesta RespuestaSeleccionada
+        public ObservableCollection<clsActor> ListadoCuatroActores { get { return listadoCuatroActores; } }
+        public clsActor ActorActual { get { return actorActual; } }
+        public clsActor ActorSeleccionado
         {
             get
             {
-                return respuestaSeleccionada;
+                return actorSeleccionado;
             }
             set
             {
-                respuestaSeleccionada = value;
-                OnPropertyChanged("RespuestaSeleccionada");
+                actorSeleccionado = value;
+                OnPropertyChanged("ActorSeleccionado");
             }
         }
         #endregion
@@ -47,8 +43,6 @@ namespace PreguntasActores.ViewModels
         public MainVM()
         {
             listadoActores = new ObservableCollection<clsActor>(clsListadosDAL.getListadoCompletoActores());
-            listadoPreguntas = new ObservableCollection<clsPregunta>(clsListadosDAL.getListadoCompletoPreguntas());
-            listadoRespuestas = new ObservableCollection<clsRespuesta>(clsListadosDAL.getListadoCompletoRespuestas());
         }
         #endregion
 
