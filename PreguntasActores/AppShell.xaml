@@ -12,4 +12,14 @@
         ContentTemplate="{DataTemplate local:Menu}"
         Route="Menu" />
 
+    <ShellContent
+        Title="Partido"
+        ContentTemplate="{DataTemplate local:Partido}"
+        Route="Partido" />
+
+    <ShellContent
+        Title="Final"
+        ContentTemplate="{DataTemplate local:FinPartido}"
+        Route="FinPartido" />
+
 </Shell>

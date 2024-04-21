@@ -9,10 +9,16 @@
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout HorizontalOptions="Center" Spacing="30">
+        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">
+            <Image Source="tom_cruise.jpg" Aspect="AspectFit"/>
+        </Border>
+        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" Padding="10">
+            <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium"/>
+        </Border>
+        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20">
+            <CollectionView></CollectionView>
+        </Border>
+    </StackLayout>
+    
 </ContentPage>
