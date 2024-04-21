@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Entities;
+using Plugin.Maui.Audio;
 using PreguntasActores.Utilities;
 
 namespace PreguntasActores.ViewModels
@@ -18,6 +19,7 @@ namespace PreguntasActores.ViewModels
         private ObservableCollection<clsActor> listadoActores;
         private ObservableCollection<clsPregunta> listadoPreguntas;
         private ObservableCollection<clsRespuesta> listadoRespuestas;
+        private IAudioManager audioManager;
         private clsPregunta preguntaActual;
         private clsRespuesta respuestaSeleccionada;
         private DelegateCommand cambiarRespuesta;
