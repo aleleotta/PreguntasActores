@@ -31,6 +31,13 @@
             this.apellidos = apellidos;
             this.foto = foto;
         }
+        public clsActor(clsActor actor)
+        {
+            this.id = actor.Id;
+            this.nombre = actor.Nombre;
+            this.apellidos = actor.Apellidos;
+            this.foto = actor.Foto;
+        }
         #endregion
     }
 }
