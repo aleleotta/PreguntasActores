@@ -3,41 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PreguntasActores.Views.Partido"
              xmlns:vm="clr-namespace:PreguntasActores.ViewModels"
+             Padding="30"
              Title="Partido">
 
     <ContentPage.BindingContext>
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-    <StackLayout HorizontalOptions="Center" Spacing="30">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" Spacing="30">
         <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">
             <Image Source="{Binding ActorActual.Foto}"/>
         </Border>
-        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" Padding="10">
-            <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium"/>
+        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 30" BackgroundColor="#3d3d3d" Padding="10">
+            <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium" HorizontalOptions="Center"/>
         </Border>
-        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20">
-            <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="30">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Text="{Binding Id}" Grid.Row="0" Grid.Column="0"/>
-                            <Button Text="{Binding Id}" Grid.Row="0" Grid.Column="1"/>
-                            <Button Text="{Binding Id}" Grid.Row="1" Grid.Column="0"/>
-                            <Button Text="{Binding Id}" Grid.Row="1" Grid.Column="1"/>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Border>
+        <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Button Text="{Binding NombreCompleto}" Margin="5,5,5,5" BorderColor="Transparent"
+                            Command="{Binding SeleccionarRespuesta}"
+                            CommandParameter="{Binding NombreCompleto}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <StackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20">
+                <Label Text="Respuesta seleccionada: " Margin="10"/>
+                <Label Text="{Binding ActorSeleccionado}"/>
+            </HorizontalStackLayout>
+            <Button Text="Confirmar" MaximumWidthRequest="100"/>
+        </StackLayout>
     </StackLayout>
     
 </ContentPage>

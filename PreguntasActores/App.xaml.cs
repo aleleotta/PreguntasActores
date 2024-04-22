@@ -1,4 +1,5 @@
-﻿namespace PreguntasActores
+﻿
+namespace PreguntasActores
 {
     public partial class App : Application
     {
@@ -8,5 +9,14 @@
 
             MainPage = new AppShell();
         }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            Window window = base.CreateWindow(activationState);
+            window.MinimumHeight = 700;
+            window.MinimumWidth = 1000;
+            return window;
+        }
+
     }
 }
