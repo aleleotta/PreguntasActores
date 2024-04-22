@@ -64,7 +64,7 @@ namespace PreguntasActores.ViewModels
                 }
             }
         }
-        private bool seleccionarRespuesta_canExecute(string prop)
+        private bool confirmar_canExecute()
         {
             if (actorSeleccionado != null) return true;
             else return false;
@@ -78,8 +78,8 @@ namespace PreguntasActores.ViewModels
         {
             getListadoActoresNombreCompleto();
             jugar = new DelegateCommand(jugar_execute);
-            seleccionarRespuesta = new DelegateCommand<string>(seleccionarRespuesta_execute, seleccionarRespuesta_canExecute);
-            confirmar = new DelegateCommand(confirmar_execute);
+            seleccionarRespuesta = new DelegateCommand<string>(seleccionarRespuesta_execute);
+            confirmar = new DelegateCommand(confirmar_execute, confirmar_canExecute);
             salir = new DelegateCommand(salir_execute);
             getListadoCuatroActores();
         }
