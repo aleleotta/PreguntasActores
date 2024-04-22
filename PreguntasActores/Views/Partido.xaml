@@ -11,13 +11,32 @@
 
     <StackLayout HorizontalOptions="Center" Spacing="30">
         <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">
-            <Image Source="tom_cruise.jpg" Aspect="AspectFit"/>
+            <Image Source="{Binding ActorActual.Foto}"/>
         </Border>
         <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" Padding="10">
             <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium"/>
         </Border>
         <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20">
-            <CollectionView></CollectionView>
+            <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="{Binding Id}" Grid.Row="0" Grid.Column="0"/>
+                            <Button Text="{Binding Id}" Grid.Row="0" Grid.Column="1"/>
+                            <Button Text="{Binding Id}" Grid.Row="1" Grid.Column="0"/>
+                            <Button Text="{Binding Id}" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Border>
     </StackLayout>
     

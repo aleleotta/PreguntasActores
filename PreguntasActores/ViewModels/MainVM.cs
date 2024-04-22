@@ -44,7 +44,23 @@ namespace PreguntasActores.ViewModels
         #endregion
 
         #region CommandExecuters
-        private async void jugar_execute() => await Shell.Current.GoToAsync("///Partido");
+        private async void jugar_execute()
+        {
+            await Shell.Current.GoToAsync("///Partido");
+            listadoCuatroActores = new ObservableCollection<clsActor>();
+            Random random = new Random();
+            for (int i = 1; i <= 4; i++)
+            {
+                listadoCuatroActores.Add(listadoActores[random.Next(listadoActores.Count)]);
+            }
+            actorActual = listadoCuatroActores[random.Next(1,4)];
+            OnPropertyChanged("ActorActual");
+            OnPropertyChanged("ListadoCuatroActores");
+        }
+
+        private void seleccionarRespuesta_execute() { }
+        private bool seleccionarRespuesta_canExecute() { return true; }
+        private void confirmar_execute() { }
         private void salir_execute() => System.Environment.Exit(0);
         #endregion
 
@@ -53,6 +69,8 @@ namespace PreguntasActores.ViewModels
         {
             listadoActores = new ObservableCollection<clsActor>(clsListadosDAL.getListadoCompletoActores());
             jugar = new DelegateCommand(jugar_execute);
+            seleccionarRespuesta = new DelegateCommand(seleccionarRespuesta_execute, seleccionarRespuesta_canExecute);
+            confirmar = new DelegateCommand(confirmar_execute);
             salir = new DelegateCommand(salir_execute);
         }
         #endregion
