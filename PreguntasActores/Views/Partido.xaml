@@ -10,29 +10,39 @@
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" Spacing="30">
-        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">
-            <Image Source="{Binding ActorActual.Foto}"/>
-        </Border>
-        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 30" BackgroundColor="#3d3d3d" Padding="10">
-            <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium" HorizontalOptions="Center"/>
-        </Border>
-        <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2" SelectedItem="{Binding ActorSeleccionado}" SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="45">
-                        <Label Text="{Binding NombreCompleto}" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <StackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20">
-                <Label Text="Respuesta seleccionada: " Margin="10" VerticalOptions="Center"/>
-                <Label Text="{Binding ActorSeleccionado.NombreCompleto}" VerticalOptions="Center"/>
-            </HorizontalStackLayout>
-            <Button Text="Confirmar" MaximumWidthRequest="100"/>
+    <StackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Aciertos:" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="{Binding Aciertos}" FontSize="Small" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="Errores:" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="{Binding Equivocados}" FontSize="Small" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="30">
+            <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">
+                <Image Source="{Binding ActorActual.Foto}"/>
+            </Border>
+            <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 30" BackgroundColor="#3d3d3d" Padding="10">
+                <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium" HorizontalOptions="Center"/>
+            </Border>
+            <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2" SelectedItem="{Binding ActorSeleccionado}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="45">
+                            <Label Text="{Binding NombreCompleto}" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20">
+                    <Label Text="Respuesta seleccionada: " Margin="10" VerticalOptions="Center"/>
+                    <Label Text="{Binding ActorSeleccionado.NombreCompleto}" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Button Text="Confirmar" MaximumWidthRequest="100" Command="{Binding Confirmar}"/>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
-    
+
 </ContentPage>

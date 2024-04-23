@@ -5,6 +5,7 @@ using DAL;
 using Entities;
 using PreguntasActores.Models;
 using PreguntasActores.Utilities;
+using PreguntasActores.Views;
 
 namespace PreguntasActores.ViewModels
 {
@@ -35,6 +36,7 @@ namespace PreguntasActores.ViewModels
             set
             {
                 actorSeleccionado = value;
+                confirmar.RaiseCanExecuteChanged();
                 OnPropertyChanged("ActorSeleccionado");
             }
         }
@@ -49,13 +51,37 @@ namespace PreguntasActores.ViewModels
         #region CommandExecuters
         private async void jugar_execute()
         {
-            jugadas = 0; aciertos = 0; equivocados = 0;
+            aciertos = 0; equivocados = 0;
             await Shell.Current.GoToAsync("///Partido");
         }
 
-        private void confirmar_execute()
+        private async void confirmar_executeAsync()
         {
-
+            string resultado1;
+            string resultado2;
+            if (actorSeleccionado.Id == actorActual.Id)
+            {
+                aciertos++;
+                resultado1 = "Enhorabuena!";
+                resultado2 = "Has adivinado el actor!";
+            }
+            else
+            {
+                equivocados++;
+                resultado1 = "Whoops!";
+                resultado2 = $"El actor era {actorActual.NombreCompleto}.";
+            }
+            actorActual.Jugado = true;
+            OnPropertyChanged("Aciertos");
+            OnPropertyChanged("Equivocados");
+            await Application.Current.MainPage.DisplayAlert(resultado1, resultado2, "Ok");
+            getListadoCuatroActores();
+            jugadas++;
+            actorSeleccionado = null;
+            if (jugadas % 10 == 0)
+            {
+                await Shell.Current.GoToAsync("///FinPartido");
+            }
         }
 
         private bool confirmar_canExecute()
@@ -72,7 +98,7 @@ namespace PreguntasActores.ViewModels
         {
             getListadoActoresNombreCompleto();
             jugar = new DelegateCommand(jugar_execute);
-            confirmar = new DelegateCommand(confirmar_execute, confirmar_canExecute);
+            confirmar = new DelegateCommand(confirmar_executeAsync, confirmar_canExecute);
             salir = new DelegateCommand(salir_execute);
             getListadoCuatroActores();
         }

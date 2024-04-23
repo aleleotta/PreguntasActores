@@ -13,7 +13,7 @@ namespace PreguntasActores.Models
         private bool jugado = false;
 
         public string NombreCompleto { get { return nombreCompleto; } }
-        public bool Jugado { get { return jugado; } }
+        public bool Jugado { get { return jugado; } set { jugado = value; } }
 
         public clsActorNombreCompleto(clsActor actor) : base(actor)
         {

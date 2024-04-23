@@ -28,7 +28,7 @@ namespace DAL
                 new clsActor(14, "Mads", "Mikkelsen", "mads_mikkelsen.jpg"),
                 new clsActor(15, "Michael", "Rooker", "michael_rooker.jpg"),
                 new clsActor(16, "Norman", "Reedus", "norman_reedus.jpg"),
-                new clsActor(17, "Robert", "Downey", "robert_downey.jpg"),
+                new clsActor(17, "Robert", "Downey", "robert_downey_jr.jpg"),
                 new clsActor(18, "Russell", "Crowe", "russell_crowe.jpg"),
                 new clsActor(19, "Ryan", "Gosling", "ryan_gosling.jpg"),
                 new clsActor(20, "Tom", "Cruise", "tom_cruise.jpg"),

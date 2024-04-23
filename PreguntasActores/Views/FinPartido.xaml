@@ -4,24 +4,24 @@
              x:Class="PreguntasActores.Views.FinPartido"
              xmlns:vm="clr-namespace:PreguntasActores.ViewModels"
              x:DataType="vm:MainVM"
-             Title="FinPartido">
+             Title="Final">
 
     <ContentPage.BindingContext>
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-    <StackLayout HorizontalOptions="Center" Padding="20" Spacing="20">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20" Spacing="20">
         <StackLayout Spacing="5" VerticalOptions="Start">
             <HorizontalStackLayout>
-                <Label Text="Aciertos:" Margin="10" VerticalOptions="Center"/>
-                <Label Text="{Binding Aciertos}" VerticalOptions="Center"/>
+                <Label Text="Aciertos:" Margin="10" VerticalOptions="Center" FontSize="Medium"/>
+                <Label Text="{Binding Aciertos}" VerticalOptions="Center" FontSize="Medium"/>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
-                <Label Text="Equivocados:" Margin="10" VerticalOptions="Center"/>
-                <Label Text="{Binding Equivocados}" VerticalOptions="Center"/>
+                <Label Text="Errores:" Margin="10" VerticalOptions="Center" FontSize="Medium"/>
+                <Label Text="{Binding Equivocados}" VerticalOptions="Center" FontSize="Medium"/>
             </HorizontalStackLayout>
         </StackLayout>
-        <Label Text="Quieres intentarlo de nuevo?" Margin="0,0,0,10"/>
+        <Label Text="Quieres intentarlo de nuevo?" FontSize="Large" Margin="0,0,0,30"/>
         <StackLayout Spacing="50" VerticalOptions="End">
             <Button Text="Jugar" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Jugar}"/>
             <Button Text="Salir" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Salir}"/>
