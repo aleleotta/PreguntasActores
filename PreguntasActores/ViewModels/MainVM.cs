@@ -13,21 +13,20 @@ namespace PreguntasActores.ViewModels
         #region Attributes
         private ObservableCollection<clsActorNombreCompleto> listadoActores;
         private ObservableCollection<clsActorNombreCompleto> listadoCuatroActores;
-        private clsActor actorActual; // El actor a adivinar.
-        private clsActor actorSeleccionado;
+        private clsActorNombreCompleto actorActual; // El actor a adivinar.
+        private clsActorNombreCompleto actorSeleccionado;
         private int jugadas = 0;
         private int aciertos = 0;
         private int equivocados = 0;
         private DelegateCommand jugar;
-        private DelegateCommand<string> seleccionarRespuesta;
         private DelegateCommand confirmar;
         private DelegateCommand salir;
         #endregion
 
         #region Properties
         public ObservableCollection<clsActorNombreCompleto> ListadoCuatroActores { get { return listadoCuatroActores; } }
-        public clsActor ActorActual { get { return actorActual; } }
-        public clsActor ActorSeleccionado
+        public clsActorNombreCompleto ActorActual { get { return actorActual; } }
+        public clsActorNombreCompleto ActorSeleccionado
         {
             get
             {
@@ -43,7 +42,6 @@ namespace PreguntasActores.ViewModels
         public int Aciertos { get { return aciertos; } }
         public int Equivocados { get { return equivocados; } }
         public DelegateCommand Jugar { get { return jugar; } }
-        public DelegateCommand<string> SeleccionarRespuesta { get { return seleccionarRespuesta; } }
         public DelegateCommand Confirmar { get { return confirmar; } }
         public DelegateCommand Salir { get { return salir; } }
         #endregion
@@ -51,25 +49,21 @@ namespace PreguntasActores.ViewModels
         #region CommandExecuters
         private async void jugar_execute()
         {
+            jugadas = 0; aciertos = 0; equivocados = 0;
             await Shell.Current.GoToAsync("///Partido");
         }
 
-        private void seleccionarRespuesta_execute(string prop)
+        private void confirmar_execute()
         {
-            foreach (clsActorNombreCompleto actor in listadoCuatroActores)
-            {
-                if (actor.NombreCompleto.Equals(prop))
-                {
-                    actorSeleccionado = actor;
-                }
-            }
+
         }
+
         private bool confirmar_canExecute()
         {
             if (actorSeleccionado != null) return true;
             else return false;
         }
-        private void confirmar_execute() { }
+
         private void salir_execute() => System.Environment.Exit(0);
         #endregion
 
@@ -78,7 +72,6 @@ namespace PreguntasActores.ViewModels
         {
             getListadoActoresNombreCompleto();
             jugar = new DelegateCommand(jugar_execute);
-            seleccionarRespuesta = new DelegateCommand<string>(seleccionarRespuesta_execute);
             confirmar = new DelegateCommand(confirmar_execute, confirmar_canExecute);
             salir = new DelegateCommand(salir_execute);
             getListadoCuatroActores();
@@ -90,18 +83,13 @@ namespace PreguntasActores.ViewModels
         {
             listadoCuatroActores = new ObservableCollection<clsActorNombreCompleto>();
             Random random = new Random();
-            for (int i = 1; i <= 4; i++)
+            while (listadoCuatroActores.Count < 4)
             {
                 clsActorNombreCompleto actor = listadoActores[random.Next(listadoActores.Count)];
-                do
+                if (!listadoCuatroActores.Contains(actor) && actor.Jugado == false)
                 {
-                    if (actor.Jugado == false)
-                    {
-                        listadoCuatroActores.Add(listadoActores[random.Next(listadoActores.Count)]);
-                    }
-                    actor = listadoActores[random.Next(listadoActores.Count)];
+                    listadoCuatroActores.Add(actor);
                 }
-                while (actor.Jugado == true);
             }
             actorActual = listadoCuatroActores[random.Next(1, 4)];
             OnPropertyChanged("ActorActual");

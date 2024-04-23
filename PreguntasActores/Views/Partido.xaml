@@ -17,19 +17,19 @@
         <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 30" BackgroundColor="#3d3d3d" Padding="10">
             <Label Text="Que actor es el siguiente de arriba?" FontSize="Medium" HorizontalOptions="Center"/>
         </Border>
-        <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2">
+        <CollectionView ItemsSource="{Binding ListadoCuatroActores}" ItemsLayout="VerticalGrid, 2" SelectedItem="{Binding ActorSeleccionado}" SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Button Text="{Binding NombreCompleto}" Margin="5,5,5,5" BorderColor="Transparent"
-                            Command="{Binding SeleccionarRespuesta}"
-                            CommandParameter="{Binding NombreCompleto}"/>
+                    <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="45">
+                        <Label Text="{Binding NombreCompleto}" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <StackLayout>
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20">
-                <Label Text="Respuesta seleccionada: " Margin="10"/>
-                <Label Text="{Binding ActorSeleccionado}"/>
+                <Label Text="Respuesta seleccionada: " Margin="10" VerticalOptions="Center"/>
+                <Label Text="{Binding ActorSeleccionado.NombreCompleto}" VerticalOptions="Center"/>
             </HorizontalStackLayout>
             <Button Text="Confirmar" MaximumWidthRequest="100"/>
         </StackLayout>

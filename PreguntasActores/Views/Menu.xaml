@@ -10,9 +10,13 @@
         <vm:MainVM/>
     </ContentPage.BindingContext>
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="100">
-        <Button Text="Jugar" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Jugar}"/>
-        <Button Text="Salir" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Salir}"/>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Border StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#003632">
+            <StackLayout Spacing="100" Padding="30">
+                <Button Text="Jugar" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Jugar}"/>
+                <Button Text="Salir" FontSize="Large" FontAttributes="Bold" WidthRequest="150" Command="{Binding Salir}"/>
+            </StackLayout>
+        </Border>
     </StackLayout>
     
 </ContentPage>
