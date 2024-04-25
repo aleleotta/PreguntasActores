@@ -17,8 +17,7 @@ namespace PreguntasActores.ViewModels
         private clsActorNombreCompleto actorActual; // El actor a adivinar.
         private clsActorNombreCompleto actorSeleccionado;
         private int jugadas = 0;
-        private int aciertos = 0;
-        private int equivocados = 0;
+        private clsEstatistica estatistica;
         private DelegateCommand jugar;
         private DelegateCommand confirmar;
         private DelegateCommand salir;
@@ -41,8 +40,7 @@ namespace PreguntasActores.ViewModels
             }
         }
         public int Jugadas { get { return jugadas; } }
-        public int Aciertos { get { return aciertos; } }
-        public int Equivocados { get { return equivocados; } }
+        public clsEstatistica Estatistica { get { return estatistica; } }
         public DelegateCommand Jugar { get { return jugar; } }
         public DelegateCommand Confirmar { get { return confirmar; } }
         public DelegateCommand Salir { get { return salir; } }
@@ -51,7 +49,7 @@ namespace PreguntasActores.ViewModels
         #region CommandExecuters
         private async void jugar_execute()
         {
-            aciertos = 0; equivocados = 0;
+            estatistica.Aciertos = 0; estatistica.Equivocados = 0;
             await Shell.Current.GoToAsync("///Partido");
         }
 
@@ -61,30 +59,29 @@ namespace PreguntasActores.ViewModels
             string resultado2;
             if (actorSeleccionado.Id == actorActual.Id)
             {
-                aciertos++;
+                estatistica.Aciertos++;
                 resultado1 = "Enhorabuena!";
                 resultado2 = "Has adivinado el actor!";
             }
             else
             {
-                equivocados++;
+                estatistica.Equivocados++;
                 resultado1 = "Whoops!";
                 resultado2 = $"El actor era {actorActual.NombreCompleto}.";
             }
             actorActual.Jugado = true;
-            OnPropertyChanged("Aciertos");
-            OnPropertyChanged("Equivocados");
+            OnPropertyChanged("Estatistica");
             await Application.Current.MainPage.DisplayAlert(resultado1, resultado2, "Ok");
             getListadoCuatroActores();
             jugadas++;
             actorSeleccionado = null;
             if (jugadas % 10 == 0)
             {
-                Dictionary<int, int> dic = new Dictionary<int, int>
+                Dictionary<string, object> pack = new Dictionary<string, object>
                 {
-                    {aciertos, equivocados},
+                    {"Estatisticas", estatistica},
                 };
-                await Shell.Current.GoToAsync("///FinPartido");
+                await Shell.Current.GoToAsync("///FinPartido", false, pack);
             }
         }
 
@@ -104,6 +101,7 @@ namespace PreguntasActores.ViewModels
             jugar = new DelegateCommand(jugar_execute);
             confirmar = new DelegateCommand(confirmar_executeAsync, confirmar_canExecute);
             salir = new DelegateCommand(salir_execute);
+            estatistica = new clsEstatistica();
             getListadoCuatroActores();
         }
         #endregion

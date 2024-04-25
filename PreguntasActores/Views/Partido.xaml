@@ -13,11 +13,11 @@
     <StackLayout>
         <HorizontalStackLayout Spacing="10">
             <Label Text="Aciertos:" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center"/>
-            <Label Text="{Binding Aciertos}" FontSize="Small" VerticalOptions="Center"/>
+            <Label Text="{Binding Estatistica.Aciertos}" FontSize="Small" VerticalOptions="Center"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout Spacing="10">
             <Label Text="Errores:" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center"/>
-            <Label Text="{Binding Equivocados}" FontSize="Small" VerticalOptions="Center"/>
+            <Label Text="{Binding Estatistica.Equivocados}" FontSize="Small" VerticalOptions="Center"/>
         </HorizontalStackLayout>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="30">
             <Border Stroke="Black" StrokeThickness="0.5" StrokeShape="RoundRectangle, 20" BackgroundColor="#3d3d3d" HeightRequest="150" WidthRequest="130">

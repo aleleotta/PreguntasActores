@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PreguntasActores.Views.FinPartido"
              xmlns:vm="clr-namespace:PreguntasActores.ViewModels"
-             x:DataType="vm:MainVM"
+             Padding="30"
              Title="Final">
 
     <ContentPage.BindingContext>
-        <vm:MainVM/>
+        <vm:SubVM/>
     </ContentPage.BindingContext>
 
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="20" Spacing="20">
         <StackLayout Spacing="5" VerticalOptions="Start">
             <HorizontalStackLayout>
                 <Label Text="Aciertos:" Margin="10" VerticalOptions="Center" FontSize="Medium"/>
-                <Label Text="{Binding Aciertos}" VerticalOptions="Center" FontSize="Medium"/>
+                <Label Text="{Binding Estatistica.Aciertos}" VerticalOptions="Center" FontSize="Medium"/>
             </HorizontalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Errores:" Margin="10" VerticalOptions="Center" FontSize="Medium"/>
-                <Label Text="{Binding Equivocados}" VerticalOptions="Center" FontSize="Medium"/>
+                <Label Text="{Binding Estatistica.Equivocados}" VerticalOptions="Center" FontSize="Medium"/>
             </HorizontalStackLayout>
         </StackLayout>
         <Label Text="Quieres intentarlo de nuevo?" FontSize="Large" Margin="0,0,0,30"/>
