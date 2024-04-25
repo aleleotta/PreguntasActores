@@ -80,6 +80,10 @@ namespace PreguntasActores.ViewModels
             actorSeleccionado = null;
             if (jugadas % 10 == 0)
             {
+                Dictionary<int, int> dic = new Dictionary<int, int>
+                {
+                    {aciertos, equivocados},
+                };
                 await Shell.Current.GoToAsync("///FinPartido");
             }
         }
